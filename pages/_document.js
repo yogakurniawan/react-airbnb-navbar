@@ -8,7 +8,8 @@ injectGlobal`
   ${styledNormalize}
   
   body {
-    font-family: 'Helvetica Neue', arial, sans-serif;
+    font-family: arial, sans-serif;
+    font-size: 14px;
   }
   
   * {

@@ -3,7 +3,10 @@ import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import 'isomorphic-fetch'
 import Page from '../components/HOC/Page'
-import Collapse, { Panel } from '../components/Collapsible'
+import Table from '../components/Table'
+import ExpandRenderer from '../components/Table/ExpandRenderer'
+import { fetchData } from '../data'
+// import Collapse, { Panel } from '../components/Collapsible'
 // import Collapse, { Panel } from 'rc-collapse'
 
 const icon = css`
@@ -66,26 +69,37 @@ const btnDefault = css`
 ${btn('#ffffff', '#d5d5d5')}
 color: #555;
 `
-
 const btnPrimary = btn('#4f93ce', '#285f8f')
+
+var exampleCols = [
+  { "Name": "Changelist / Build", "DataName": "changelist" },
+  { "Name": "Owner", "DataName": "owner" },
+  { "Name": "Time Started", "DataName": "time_started" },
+  { "Name": "State", "DataName": "state" },
+  { "Name": "Metrics", "DataName": "metrics" },
+  { "Name": "Build", "DataName": "build" },
+  { "Name": "Unit Test", "DataName": "unit_test" },
+  { "Name": "Functional Test", "DataName": "func_test" },
+];
 
 const Test = (props) => {
   return (
     <div>
-      Pokemon Total: {props.total}
-      <Collapse accordion={true}>
-        <Panel header="hello" headerClass="my-header-class">this is panel content</Panel>
-        <Panel header="title2">this is panel content2 or other</Panel>
-      </Collapse>
+      <Table
+        cols={exampleCols}
+        rows={props.data}
+        expandRenderComponent={ExpandRenderer}
+      />
     </div>
   )
 }
 
 Test.getInitialProps = async ({ req, store }) => {
   console.log(store.getState())
-  const res = await fetch('http://pokeapi.salestock.net/api/v2/pokemon/')
-  const json = await res.json()
-  return { total: json.count }
+  // const res = await fetch('http://pokeapi.salestock.net/api/v2/pokemon/')
+  const res = await fetchData()
+  // const json = await res.json()
+  return { data: res }
 }
 
 const mapStateToProps = state => ({
