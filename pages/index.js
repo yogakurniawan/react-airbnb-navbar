@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
 import 'isomorphic-fetch'
 import Page from '../components/HOC/Page'
-
+import Collapse, { Panel } from '../components/Collapsible'
+// import Collapse, { Panel } from 'rc-collapse'
 
 const icon = css`
   display: inline-block;
@@ -72,6 +73,10 @@ const Test = (props) => {
   return (
     <div>
       Pokemon Total: {props.total}
+      <Collapse accordion={true}>
+        <Panel header="hello" headerClass="my-header-class">this is panel content</Panel>
+        <Panel header="title2">this is panel content2 or other</Panel>
+      </Collapse>
     </div>
   )
 }
