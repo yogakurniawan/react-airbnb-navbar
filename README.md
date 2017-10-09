@@ -1,3 +1,4 @@
-# A Practical Guide to Redux Form
+# React Next Boilerplate
 
-Project from live demo of Erik Rasmussen's React Alicante talk on September 29, 2017.
+A React boilerplate using Next.js
+

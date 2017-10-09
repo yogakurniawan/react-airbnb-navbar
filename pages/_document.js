@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet, injectGlobal } from 'styled-components'
@@ -49,7 +48,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>React Alicante 2017</title>
+          <title>React Next JS Boilerplate</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"

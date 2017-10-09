@@ -1,2 +1,4 @@
 // nothing to see here
-export default (state = {}, action) => state
+export default (state = {
+  fullName: "yogakurniawan"
+}, action) => state

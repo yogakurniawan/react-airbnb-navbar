@@ -1,14 +1,9 @@
-// @flow
 import React from 'react'
-import Page from '../Page'
+import { connect } from 'react-redux'
 import styled, { css } from 'styled-components'
-import DemoForm from '../components/DemoForm'
+import 'isomorphic-fetch'
+import Page from '../components/HOC/Page'
 
-export default Page(() =>
-  <App>
-    <DemoForm />
-  </App>
-)
 
 const icon = css`
   display: inline-block;
@@ -40,105 +35,59 @@ const exclamation = css`
 `
 
 const btn = (light, dark) => css`
-  white-space: nowrap;
-  display: inline-block;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 16px;
+white-space: nowrap;
+display: inline-block;
+border-radius: 5px;
+padding: 5px 10px;
+font-size: 16px;
+color: white;
+&:visited {
   color: white;
-  &:visited {
-    color: white;
-  }
+}
+background-image: linear-gradient(${light}, ${dark});
+border: 1px solid ${dark};
+&:hover {
   background-image: linear-gradient(${light}, ${dark});
-  border: 1px solid ${dark};
-  &:hover {
-    background-image: linear-gradient(${light}, ${dark});
-    &[disabled] {
-      background-image: linear-gradient(${light}, ${dark});
-    }
-  }
-  &:visited {
-    color: black;
-  }
   &[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
+    background-image: linear-gradient(${light}, ${dark});
   }
+}
+&:visited {
+  color: black;
+}
+&[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 `
 
 const btnDefault = css`
-  ${btn('#ffffff', '#d5d5d5')}
-  color: #555;
+${btn('#ffffff', '#d5d5d5')}
+color: #555;
 `
 
 const btnPrimary = btn('#4f93ce', '#285f8f')
 
-const App = styled.div`
-  padding: 20px;
-  form {
-    border: 1px solid #eee;
-    border-radius: 3px;
-    & > div {
-      // row
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      margin: 0;
-      padding: 10px 20px;
-      &.active {
-        background-color: #ee9;
-      }
-      &.error {
-        background-color: #e99;
-        &.active {
-          background-color: #e99;
-        }
-      }
-      & > label {
-        width: 7em;
-        padding: 5px;
-        font-weight: bold;
-        color: #444;
-      }
-      & > span {
-        &:before {
-          ${exclamation} margin-right: 5px;
-        }
-        white-space: nowrap;
-        color: #600;
-        font-weight: bold;
-        padding: 5px;
-        margin-left: 5px;
-      }
-    }
-    input,
-    textarea,
-    select {
-      flex: 1;
-      padding: 5px 8px;
-      border: 1px solid #ddd;
-      border-radius: 2px;
-    }
-    button {
-      margin: 10px;
-      &[type='button'] {
-        ${btnDefault};
-      }
-      &[type='submit'] {
-        ${btnPrimary};
-        &:before {
-          ${paperPlane} margin-right: 5px;
-        }
-      }
-      &.submitting {
-        cursor: wait !important;
-      }
-      &.add {
-        &:before {
-          ${plus};
-          margin-right: 5px;
-        }
-      }
-    }
-  }
-`
+const Test = (props) => {
+  return (
+    <div>
+      Pokemon Total: {props.total}
+    </div>
+  )
+}
+
+Test.getInitialProps = async ({ req, store }) => {
+  console.log(store.getState())
+  const res = await fetch('http://pokeapi.salestock.net/api/v2/pokemon/')
+  const json = await res.json()
+  return { total: json.count }
+}
+
+const mapStateToProps = state => ({
+  fullName: state.auth.fullName
+})
+const mapDispatchToProps = {
+
+}
+
+export default Page(connect(mapStateToProps, mapDispatchToProps)(Test))

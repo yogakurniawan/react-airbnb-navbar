@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import initStore from './redux/initStore'
+import initStore from '../../redux/initStore'
 
 const page = WrappedComponent => {
   class Page extends Component {
@@ -9,6 +9,7 @@ const page = WrappedComponent => {
       const otherProps = WrappedComponent.getInitialProps
         ? await WrappedComponent.getInitialProps({ ...context, store })
         : {}
+        console.log(otherProps)
       return { ...otherProps, initialState: store.getState() }
     }
 
@@ -18,6 +19,7 @@ const page = WrappedComponent => {
     }
     render() {
       const { initialState, ...rest } = this.props
+      // console.log(this.props)
       return (
         <Provider store={this.store}>
           <WrappedComponent {...rest} />
