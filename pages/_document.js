@@ -8,8 +8,8 @@ injectGlobal`
   ${styledNormalize}
   
   body {
-    font-family: arial, sans-serif;
-    font-size: 14px;
+    font-family: verdana, sans-serif;
+    font-size: 12px;
   }
   
   * {
@@ -20,7 +20,7 @@ injectGlobal`
 
   a {
     text-decoration: underline;
-    color: #145;
+    color: #0a73ef;
   }
 
   p {
