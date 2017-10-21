@@ -7,7 +7,14 @@ const fakeDatabase = [
     owner: '',
     time_started: '',
     state: 'Pending',
-    metrics: 0,
+    metrics: {
+      status: 'pending',
+      progress: 0,
+      test: 0,
+      maintanability: 0,
+      security: 0,
+      workmanship: 0
+    },
     build: 0,
     unit_test: 0,
     func_test: 0
@@ -18,7 +25,14 @@ const fakeDatabase = [
     owner: 'jtuk',
     time_started: '4/18/2014 12:12pm',
     state: 'Running',
-    metrics: 0,
+    metrics: {
+      status: 'running',
+      progress: 50,
+      test: 0,
+      maintanability: 0,
+      security: 0,
+      workmanship: 0
+    },
     build: 0,
     unit_test: 0,
     func_test: 0
@@ -29,7 +43,14 @@ const fakeDatabase = [
     owner: 'samy',
     time_started: '4/18/2014 10:53am',
     state: 'Rejected',
-    metrics: 0,
+    metrics: {
+      status: 'rejected',
+      progress: 100,
+      test: 64,
+      maintanability: 53,
+      security: 64,
+      workmanship: 72
+    },
     build: 0,
     unit_test: 0,
     func_test: 0
@@ -40,7 +61,14 @@ const fakeDatabase = [
     owner: '',
     time_started: '4/17/2014 9:42am',
     state: 'Complete',
-    metrics: 0,
+    metrics: {
+      status: 'complete',
+      progress: 100,
+      test: 64,
+      maintanability: 53,
+      security: 64,
+      workmanship: 72
+    },
     build: 0,
     unit_test: 0,
     func_test: 0

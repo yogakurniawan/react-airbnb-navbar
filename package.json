@@ -23,6 +23,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.0.4",
     "styled-components": "^2.1.2",
+    "styled-map": "^2.0.1",
     "styled-normalize": "^2.2.1"
   },
   "devDependencies": {
