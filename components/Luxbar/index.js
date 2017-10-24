@@ -9,17 +9,17 @@ const LuxbarFixed = styled.header`
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-bottom: 1px solid #e4e4e4 !important;
 `
 
 const LuxbarMenu = styled.div`
   @media screen and (min-width: 768px) {
     overflow: visible;
   }
-  height: 58px;
-  background-color: #006064;
-  color: #fff;
-  min-height: 58px;
+  height: 81px;
+  background-color: transparent;
+  color: #484848;
+  min-height: 81px;
   transition: 0.6s ease;
   width: 100%;
 `
@@ -44,7 +44,7 @@ const LuxbarHeader = styled.li`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 58px;
+  height: 81px;
 `
 
 const BaseAStyle = css`
@@ -90,19 +90,13 @@ const LuxbarHamburger = styled.label`
     position: absolute;
     ${BaseSpanStyle}
   }
-  &:before {
-    transform: rotate(225deg);
-  }
-  &:after {
-    transform: rotate(-225deg);
-  }
 `
 
 const LuxbarItem = styled.li`
   @media screen and (min-width: 768px) {
       border-top: 0;
   }
-  height: 58px;
+  height: 81px;
   background-color: ${props => props.active ? '#00838f' : 'inherit'};
   a {
     ${BaseAStyle}
@@ -111,17 +105,64 @@ const LuxbarItem = styled.li`
   }
 `
 
+const LuxbarCheckbox = styled.input`
+  @media screen and (min-width: 768px) {
+    &:not(:checked) {
+      ${LuxbarMenu} {
+        overflow: visible;
+      }
+    }
+    &:checked {
+      ${LuxbarMenu} {
+        height: 81px;
+      }
+    }
+  }
+  display: none;
+  &:checked ~ {
+    ${LuxbarMenu} {
+      position: absolute;
+      transition: height 0.6s ease;
+      height: 100vh;
+      overflow: auto;
+    }
+  }
+  &:checked + {
+    ${LuxbarMenu} {
+      ${LuxbarHamburger} span {
+        background-color: transparent;
+        &:before, &:after {
+          margin-top: 0;
+        }
+        &:before {
+          transform: rotate(225deg);
+        }
+        &:after {
+          transform: rotate(-225deg);
+        }
+      }
+    }
+  }
+  &:not(:checked) ~ {
+    ${LuxbarMenu} {
+      overflow: hidden;
+      height: 81px;  
+    }
+  }
+`
+
 
 const Luxbar = (props) => {
   return (
     <LuxbarFixed>
+      <LuxbarCheckbox type="checkbox" id="luxbar-checkbox" />
       <LuxbarMenu>
         <LuxbarNavigation>
           <LuxbarHeader>
             <LuxbarBrand>
               Luxbar Demo
             </LuxbarBrand>
-            <LuxbarHamburger>
+            <LuxbarHamburger htmlFor='luxbar-checkbox'>
               <span></span>
             </LuxbarHamburger>
           </LuxbarHeader>
