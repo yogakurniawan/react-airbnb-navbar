@@ -7,14 +7,14 @@ import Navbar from '../components/Navbar'
 import Luxbar from '../components/Luxbar'
 
 const H3 = styled.h3 `
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  color: #484848 !important;
-  font-weight: 700 !important;
-  margin-bottom: 0px !important;
-  font-size: 32px !important;
-  line-height: 40px !important;
-  letter-spacing: -0.6px !important;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  color: #484848;
+  font-weight: 700;
+  margin-bottom: 0px;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -0.6px;
 `;
 
 const Index = (props) => {
