@@ -51,14 +51,6 @@ const BaseAStyle = css`
   cursor: pointer;
 `
 
-const NavbarBrand = styled.div`
-  @media screen and (max-width: 320px) {
-    padding: 14px;
-  }
-  padding: 18px 24px 18px 24px;
-  display: table;
-`
-
 const Icon = css`
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -89,6 +81,18 @@ const ArrowDownWrapper = styled.label`
       ${ArrowDown}      
     }
   }
+`
+
+const NavbarBrand = styled.div`
+  @media screen and (max-width: 320px) {
+    padding: 14px;
+  }
+  cursor: pointer;
+  ${ArrowDownWrapper} {
+    cursor: pointer;
+  }
+  padding: 18px 24px 18px 24px;
+  display: table;
 `
 
 const NavbarItem = styled.li`
@@ -123,7 +127,7 @@ const NavbarCheckbox = styled.input`
       position: absolute;
       transition: height 250ms ease-in-out;
       height: 100vh;
-      overflow: auto;
+      overflow: hidden;
     }
   }
   &:checked + ${NavbarMenu} {
@@ -207,10 +211,10 @@ const SearchIconWrapper = styled.div`
   float: left;
   @media screen and (min-width: 768px) {
     padding-left: 12px;
-    padding-top: 8px;
+    padding-top: 12px;
   }
   padding-left: 0;
-  padding-top: 13px;
+  padding-top: 16px;
 `
 
 const SearchInputWrapper = styled.div`
@@ -225,7 +229,7 @@ const SearchInput = styled.input`
   color: #484848;
   background-color: transparent;
   border: 0;
-  padding: 8px;
+  padding: 12px;
   width: 100%;
   font-weight: normal;
   text-overflow: ellipsis;
@@ -242,7 +246,7 @@ const SearchBox = styled.div`
   border: 1px solid #DBDBDB;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0 8px;
-  height: 42px;
+  height: 50px;
   width: 70%;
   margin-right: auto;
   white-space: nowrap;
