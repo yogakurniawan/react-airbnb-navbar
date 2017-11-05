@@ -3,316 +3,311 @@ import styled, { css } from 'styled-components'
 import Logo from './Logo.svg'
 import Search from './Search.svg'
 
-const Wrapper = styled.div`
-  position: fixed !important;
-  z-index: 10 !important;
-  width: 100% !important;
+const NavbarFixed = styled.header`
+  border-bottom: 1px solid #e4e4e4;
+  z-index: 5;
+  position: relative;
 `
 
-const Header = styled.header`
-  position: relative !important;
-  z-index: 5 !important;
-`
-
-const RowWrapper = styled.div`
-  background-color: transparent !important;
-  box-shadow: none !important;
-  position: absolute !important;
-  top: 0px !important;
-  left: 0px !important;
-  right: 0px !important;
-`
-
-const baseColStyle = css`
-  display: table-cell !important;
-  vertical-align: middle !important;
-`
-
-const Row = styled.div`
-  display: table !important;
-  width: 100% !important;
-`
-
-const Col = styled.div`
-  ${baseColStyle}
-`
-
-const LogoDiv = styled.div`
-  position: relative !important;
-  z-index: 20 !important;
-`
-
-const SearchInput = styled.div`
-  ${baseColStyle}
-  width: 100% !important;
-`
-
-const Ul = styled.div`
-  display: table !important;
-  list-style: none !important;
-  padding: 0px !important;
-  margin: 0px !important;
-  height: 64px !important;
-`
-
-const Li = styled.div`
-  display: table-cell !important;
-`
-
-const NavWrapper = styled.div`
-  @media (min-width: 1075px) {
-    display: block !important;
+const NavbarMenu = styled.div`
+  @media screen and (min-width: 768px) {
+    overflow: visible;
   }
-  display: none !important;
-  opacity: 1 !important;
-  transition: 0.25s opacity ease-out !important;
+  height: 81px;
+  background-color: transparent;
+  color: #484848;
+  min-height: 81px;
+  width: 100%;
+  transition: 250ms ease-in-out;
 `
 
-const Div = styled.div`
-  position: relative !important;
-`
-
-const ButtonMenu = styled.button`
-  @media (min-width: 744px) {
-    height: 80px !important;
-    line-height: 80px !important;
+const NavbarNavigation = styled.ul`
+  @media screen and (min-width: 768px) {
+    flex-flow: row;
+    justify-content: flex-end;
   }
-  appearance: none !important;
-  background: transparent !important;
-  border: none !important;
-  color: inherit !important;
-  display: inline-block !important;
-  height: 64px !important;
-  line-height: 64px !important;
-  text-decoration: none !important;
-  margin: 0px !important;
-  position: relative !important;
-  padding: 0 16px !important;
-  white-space: nowrap !important;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 `
 
-const AbsoluteRowWrapper = styled.div`
-  @media (min-width: 744px) {
-    height: 81px !important;
-    border-bottom: 1px solid #e4e4e4 !important;
+const NavbarHeader = styled.li`
+  @media screen and (min-width: 768px) {
+    margin-right: auto;
   }
-  position: absolute !important;
-  width: 100% !important;
-  box-shadow: none !important;
-  border-bottom: none !important;
-  height: 65px !important;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7f7f7, endColorstr=#ffffff) !important;
-  background: linear-gradient(0deg, #ffffff, #f7f7f7) !important;
-  display: block !important;
-`
-
-const AbsoluteSearchBarWrapper = styled.div`
-  @media (min-width: 1168px) {
-    width: 560px !important;
-  }
-  @media (min-width: 1075px) {
-    width: 460px !important;
-    left: 80px !important;
-  }
-  @media (min-width: 744px) {
-    top: 16px !important;
-    width: 460px !important;
-  }
-  left: 90px !important;
-  right: 12px !important;
-  display: block !important;
-  position: absolute !important;
-  top: 10px !important;
-  z-index: 100 !important;
-`
-
-const SearchBar = styled.div`
-  font-size: 19px !important;
-  line-height: 24px !important;
-  letter-spacing: undefined !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  color: #484848 !important;
-  background-color: #ffffff !important;
-  border-radius: 4px !important;
-  border: 1px solid #DBDBDB !important;
-  padding: 0px !important;
-  display: table !important;
-  table-layout: fixed !important;
-  height: 42px !important;
-  width: 100% !important;
-  position: relative !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  background-color: white;
-`
-
-const SearchBarChild1 = styled.div`
-  display: table-cell !important;
-  vertical-align: middle !important;
-  position: relative !important;
-  transition: width 0.3s !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 81px;
   width: 100%;
 `
 
-const SearchInputWrapper = styled.div`
-  font-size: 19px !important;
-  line-height: 24px !important;
-  color: #484848 !important;
-  border-width: 1px !important;
-  border-style: solid !important;
-  border-radius: 2px !important;
-  background-color: #ffffff !important;
-  position: relative !important;
-  z-index: 0 !important;
-  margin-bottom: 0px !important;
-  margin-top: 0px !important;
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-  border-color: #ffffff !important;
-  display: block !important;
+const BaseAStyle = css`
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 `
 
-const SearchInputIconWrapper = styled.div`
-  float: left !important;
-`
-
-const SearchInputIconWrapper2 = styled.div`
-  padding-top: 11px !important;
-  padding-left: 12px !important;
-`
-
-const SearchInputIconWrapper3 = styled.div`
-  padding-left: 4px !important;
-  padding-right: 5px !important;
-`
-
-const AutoCompleteWrapper = styled.div`
-  overflow: hidden !important;
-  position: relative !important;
-`
-
-const AutoComplete = styled.input`
-  font-size: 19px !important;
-  line-height: 24px !important;
-  color: #484848 !important;
-  background-color: transparent !important;
-  border: 0px !important;
-  padding: 11px !important;
-  width: 100% !important;
-  font-weight: normal !important;
-  text-overflow: ellipsis !important;
-`
-
-const A = styled.a`
-  display: table-cell !important;
-`
-
-const OuterLogoDiv = styled.div`
-  @media (min-width: 744px) {
-    height: 80px !important;
+const NavbarBrand = styled.div`
+  @media screen and (max-width: 320px) {
+    padding: 14px;
   }
-  display: table-cell !important;
-  height: 64px !important;
-  position: relative !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  transition: 0.25s color !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-  vertical-align: middle !important;
-  white-space: nowrap !important;
+  padding: 18px 24px 18px 24px;
+  display: table;
 `
 
-const SvgLogoOuterDiv = styled.div`
-  display: inline-block !important;
+const Icon = css`
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 `
 
-const SvgLogoWrapperDiv = styled.div`
-  color: #FF5A5F !important;
-  display: inline-block !important;
-  vertical-align: middle !important;
-  font-size: 34px !important;
-  transition: 0.25s color !important;
+const ArrowDown = css`
+  ${Icon}
+  content: '\f078';
 `
 
-const LogoIcon = styled(Logo) `
+const ArrowDownWrapper = styled.label`
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  display: inline-block;
+  font-size: 9px;
+  margin-left: 8px;
+  vertical-align: middle;
+  transition-property: -ms-transform,-webkit-transform,transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  span {
+    &:before {
+      ${ArrowDown}      
+    }
+  }
+`
+
+const NavbarItem = styled.li`
+  @media screen and (min-width: 768px) {
+      border-top: 0;
+      font-size: 1em;
+  }
+  height: 81px;
+  font-size: 19px;
+  a {
+    ${BaseAStyle}
+    padding: 18px 24px 18px 24px;
+    display: block;
+  }
+`
+
+const NavbarCheckbox = styled.input`
+  @media screen and (min-width: 768px) {
+    &:not(:checked) {
+      ${NavbarMenu} {
+        overflow: visible;
+      }
+    }
+    &:checked {
+      ${NavbarMenu} {
+        height: 81px;
+      }
+    }
+  }
+  display: none;
+  &:checked ~ ${NavbarMenu} {
+      position: absolute;
+      transition: height 250ms ease-in-out;
+      height: 100vh;
+      overflow: auto;
+    }
+  }
+  &:checked + ${NavbarMenu} {
+      ${ArrowDownWrapper} {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &:not(:checked) ~ {
+    ${NavbarMenu} {
+      overflow: hidden;
+      height: 81px;  
+    }
+  }
+`
+
+const ButtonMenu = styled.button`
+  @media (min-width: 768px) {
+    height: 80px !important;
+    line-height: 80px;
+  }
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: inherit;
+  display: inline-block;
+  height: 64px;
+  line-height: 64px;
+  text-decoration: none;
+  margin: 0px;
+  position: relative;
+  padding: 0 16px;
+  white-space: nowrap;
+`
+
+const Item = styled.div`
+  @media (min-width: 768px) {
+    font-weight: normal;
+  }
+  padding: 8px 0;
+  font-weight: 300;
+  line-height: 1;
+  vertical-align: middle;
+  &:hover {
+    border-bottom: 2px solid #484848;
+  }
+`
+
+const IconCss = css`
   height: 1em;
   width: 1em;
   display: block;
   fill: currentColor;
 `
 
+const LogoIcon = styled(Logo) `
+  ${IconCss}
+`
+
+const LogoIconWrapper = styled.div`
+  color: #FF5A5F;
+  vertical-align: middle;
+  font-size: 34px;
+  display: inline-block;
+`
+
 const SearchIcon = styled(Search) `
-  height: 24px;
-  width: 24px;
+  height: 16px;
+  width: 16px;
   display: block;
-  fill: rgb(118, 118, 118);
+  fill: currentcolor;
+  @media screen and (min-width: 768px) {
+    height: 24px;
+    width: 24px;
+    display: block;
+    fill: rgb(118, 118, 118);
+  }
+`
+
+const SearchIconWrapper = styled.div`
+  float: left;
+  @media screen and (min-width: 768px) {
+    padding-left: 12px;
+    padding-top: 8px;
+  }
+  padding-left: 0;
+  padding-top: 13px;
+`
+
+const SearchInputWrapper = styled.div`
+  overflow: hidden;
+  position: relative;
+`
+
+const SearchInput = styled.input`
+  font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 19px;
+  line-height: 24px;
+  color: #484848;
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+  width: 100%;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  &:focus {
+    outline: none;
+  }
+`
+
+const SearchBox = styled.div`
+  line-height: 24px;
+  color: #484848;
+  background-color: #ffffff;
+  border-radius: 4px !important;
+  border: 1px solid #DBDBDB;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 8px;
+  height: 42px;
+  width: 70%;
+  margin-right: auto;
+  white-space: nowrap;
+  position: relative;
+  @media screen and (min-width: 1168px) {
+    width: 560px;
+  }
+  @media screen and (min-width: 1075px) {
+    width: 460px;
+  }
+  @media screen and (min-width: 1040px) {
+    width: 500px;
+  }
+`
+
+const ContainerFluid = styled.div`
+  width: 100%;
+  position: fixed;
+  z-index: 10;
 `
 
 const Navbar = (props) => {
   return (
-    <Wrapper>
-      <Header>
-        <RowWrapper>
-          <Row>
-            <Col>
-              <LogoDiv>
-                <div>
-                  <A href="#">
-                    <OuterLogoDiv>
-                      <SvgLogoOuterDiv>
-                        <SvgLogoWrapperDiv>
-                          <LogoIcon />
-                        </SvgLogoWrapperDiv>
-                      </SvgLogoOuterDiv>
-                    </OuterLogoDiv>
-                  </A>
-                </div>
-              </LogoDiv>
-            </Col>
-            <SearchInput>
-            </SearchInput>
-            <Col>
-              <NavWrapper>
-                <nav>
-                  <Ul>
-                    <Li>
-                      <Div>
-                        <ButtonMenu>
-                          <span>Bantuan</span>
-                        </ButtonMenu>
-                      </Div>
-                    </Li>
-                  </Ul>
-                </nav>
-              </NavWrapper>
-            </Col>
-          </Row>
-        </RowWrapper>
-      </Header>
-      <AbsoluteRowWrapper>
-        <AbsoluteSearchBarWrapper>
-          <form>
-            <SearchBar>
-              <SearchBarChild1>
+    <ContainerFluid>
+      <NavbarFixed>
+        <NavbarCheckbox type="checkbox" id="Navbar-checkbox" />
+        <NavbarMenu>
+          <NavbarNavigation>
+            <NavbarHeader>
+              <NavbarBrand>
+                <LogoIconWrapper>
+                  <LogoIcon />
+                </LogoIconWrapper>
+                <ArrowDownWrapper htmlFor='Navbar-checkbox'>
+                  <span />
+                </ArrowDownWrapper>
+              </NavbarBrand>
+              <SearchBox>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
                 <SearchInputWrapper>
-                  <SearchInputIconWrapper>
-                    <SearchInputIconWrapper2>
-                      <SearchInputIconWrapper3>
-                        <SearchIcon />
-                      </SearchInputIconWrapper3>
-                    </SearchInputIconWrapper2>
-                  </SearchInputIconWrapper>
-                  <AutoCompleteWrapper>
-                    <AutoComplete />
-                  </AutoCompleteWrapper>
+                  <SearchInput />
                 </SearchInputWrapper>
-              </SearchBarChild1>
-            </SearchBar>
-          </form>
-        </AbsoluteSearchBarWrapper>
-      </AbsoluteRowWrapper>
-    </Wrapper>
+              </SearchBox>
+            </NavbarHeader>
+            <NavbarItem>
+              <ButtonMenu>
+                <Item>Menu 1</Item>
+              </ButtonMenu>
+            </NavbarItem>
+            <NavbarItem>
+              <ButtonMenu>
+                <Item>Menu 2</Item>
+              </ButtonMenu>
+            </NavbarItem>
+            <NavbarItem>
+              <ButtonMenu>
+                <Item>Menu 3</Item>
+              </ButtonMenu>
+            </NavbarItem>
+          </NavbarNavigation>
+        </NavbarMenu>
+      </NavbarFixed>
+    </ContainerFluid>
   )
 }
 

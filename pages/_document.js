@@ -5,7 +5,7 @@ import styledNormalize from 'styled-normalize'
 import styledSanitize from 'styled-sanitize'
 
 // eslint-disable-next-line no-unused-expressions
-injectGlobal `
+injectGlobal`
   ${styledNormalize}
   ${styledSanitize}
 
@@ -128,10 +128,14 @@ injectGlobal `
 `
 
 export default class MyDocument extends Document {
-  render() {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
-    const main = sheet.collectStyles(<Main />)
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
     const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
+  }
+
+  render() {
     return (
       <html>
         <Head>
@@ -144,10 +148,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="/static/font-awesome-4.7.0/css/font-awesome.min.css"
           />
-          {styleTags}
+          {this.props.styleTags}
         </Head>
         <body>
-          {main}
+          <Main />
           <NextScript />
         </body>
       </html>

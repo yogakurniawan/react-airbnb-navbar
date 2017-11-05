@@ -1,7 +1,7 @@
 {
-  "name": "react-next-boilerplate",
+  "name": "react-airbnb-navbar",
   "version": "1.0.0",
-  "description": "React Next Boilerplate",
+  "description": "React Airbnb Navbar",
   "scripts": {
     "lint": "eslint .",
     "start": "next"
@@ -23,7 +23,7 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.0.4",
-    "styled-components": "^2.1.2",
+    "styled-components": "^2.2.3",
     "styled-map": "^2.0.1",
     "styled-normalize": "^2.2.1",
     "styled-sanitize": "^1.0.0"
