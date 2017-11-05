@@ -22,5 +22,4 @@ yarn start
 
 ## License
 
-MIT License
-Yoga Kurniawan
+MIT License [@yogkurniawan](https://twitter.com/yogkurniawan)
